@@ -42,7 +42,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
@@ -352,30 +352,44 @@ textarea {
 }
 
 @media (max-width: 860px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
   .header-inner {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding: 12px 0;
     min-height: auto;
-    gap: 10px;
+    gap: 8px;
+    padding: 10px 0;
   }
 
   .logo {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
   }
 
   .main-nav {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 10px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 2px 2px 8px;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 8px !important;
+    width: 100%;
+    padding: 4px 2px 8px;
+    justify-content: flex-start !important;
+    align-items: center;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    white-space: nowrap;
   }
 
   .main-nav::-webkit-scrollbar {
@@ -383,18 +397,23 @@ textarea {
   }
 
   .main-nav a {
-    flex: 0 0 auto;
-    font-size: 0.82rem;
-    white-space: nowrap;
-    padding: 8px 12px;
+    flex: 0 0 auto !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap !important;
+    font-size: 0.78rem !important;
+    line-height: 1;
+    padding: 8px 12px !important;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background: var(--white);
+    background: #fff;
     color: var(--text);
   }
 
-  .header-inner > .btn {
-    display: none;
+  .header-inner > .btn,
+  .site-header .btn-primary {
+    display: none !important;
   }
 
   .category-grid,
@@ -417,5 +436,9 @@ textarea {
 
   .hero-panel {
     padding: 24px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 }
