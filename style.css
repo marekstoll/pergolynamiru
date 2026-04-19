@@ -285,7 +285,7 @@ a {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 30px;
   align-items: start;
 }
@@ -353,8 +353,7 @@ textarea {
 
 @media (max-width: 860px) {
   .site-header {
-    position: sticky;
-    top: 0;
+    position: static;
   }
 
   .container {
