@@ -96,7 +96,7 @@ a {
   min-height: 82vh;
   background:
     linear-gradient(rgba(20, 20, 20, 0.42), rgba(20, 20, 20, 0.42)),
-    url("https://picsum.photos/1600/950?random=1") center/cover no-repeat;
+    url("uvodní.png") center/cover no-repeat;
 }
 
 .hero-overlay {
