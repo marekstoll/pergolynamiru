@@ -225,7 +225,7 @@ a {
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 16px;
 }
 
 .service-grid-five {
@@ -250,13 +250,14 @@ a {
 }
 
 .service-card h3 {
-  margin: 22px 22px 10px;
-  font-size: 1.35rem;
+  margin: 18px 16px 8px;
+  font-size: 1.05rem;
 }
 
 .service-card p {
-  margin: 0 22px 24px;
+  margin: 0 16px 18px;
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .gallery-grid {
@@ -322,7 +323,7 @@ textarea {
 
 @media (max-width: 1280px) {
   .service-grid-five {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -332,6 +333,10 @@ textarea {
   }
 
   .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-grid-five {
     grid-template-columns: repeat(2, 1fr);
   }
 }
