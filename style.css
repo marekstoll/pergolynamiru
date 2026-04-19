@@ -125,9 +125,21 @@ a {
 }
 
 .hero-text {
-  margin: 0 0 30px;
+  margin: 0 0 22px;
   font-size: 1.08rem;
   max-width: 620px;
+}
+
+.hero-highlight {
+  display: inline-block;
+  margin: 0 0 30px;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  backdrop-filter: blur(6px);
 }
 
 .hero-buttons {
