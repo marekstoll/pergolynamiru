@@ -244,6 +244,15 @@ a {
   box-shadow: var(--shadow);
 }
 
+.service-link-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-link-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
 .service-image {
   aspect-ratio: 16 / 10;
   overflow: hidden;
