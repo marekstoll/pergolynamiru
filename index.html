@@ -220,5 +220,126 @@
       });
     });
   </script>
+  <div id="cookie-banner" class="cookie-banner hidden">
+  <div class="cookie-box">
+    <h3>Nastavení cookies</h3>
+    <p>
+      Tento web používá technické cookies pro fungování webu a volitelné analytické a marketingové
+      cookies pro měření návštěvnosti a pozdější reklamu na návštěvníky webu.
+    </p>
+
+    <div class="cookie-options">
+      <label class="cookie-option">
+        <input type="checkbox" checked disabled>
+        <span>Nutné cookies</span>
+      </label>
+
+      <label class="cookie-option">
+        <input type="checkbox" id="consent-analytics">
+        <span>Analytické cookies</span>
+      </label>
+
+      <label class="cookie-option">
+        <input type="checkbox" id="consent-marketing">
+        <span>Marketingové cookies</span>
+      </label>
+    </div>
+
+    <div class="cookie-actions">
+      <button id="cookie-accept-all" class="btn btn-primary" type="button">Přijmout vše</button>
+      <button id="cookie-save" class="btn cookie-btn-light" type="button">Uložit volbu</button>
+      <button id="cookie-reject" class="btn cookie-btn-light" type="button">Odmítnout volitelné</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const COOKIE_KEY = "zedniktesar_cookie_consent";
+
+  function getConsent() {
+    const raw = localStorage.getItem(COOKIE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }
+
+  function setConsent(consent) {
+    localStorage.setItem(COOKIE_KEY, JSON.stringify(consent));
+  }
+
+  function hideBanner() {
+    document.getElementById("cookie-banner").classList.add("hidden");
+  }
+
+  function showBanner() {
+    document.getElementById("cookie-banner").classList.remove("hidden");
+  }
+
+  function loadAnalytics() {
+    if (window.analyticsLoaded) return;
+    window.analyticsLoaded = true;
+
+    console.log("Analytics povoleny");
+    // SEM POZDĚJI PŘIDÁME GA4 / GTM
+  }
+
+  function loadMarketing() {
+    if (window.marketingLoaded) return;
+    window.marketingLoaded = true;
+
+    console.log("Marketing povolen");
+    // SEM POZDĚJI PŘIDÁME META PIXEL / remarketing tag
+  }
+
+  function applyConsent(consent) {
+    if (consent.analytics) loadAnalytics();
+    if (consent.marketing) loadMarketing();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const analyticsCheckbox = document.getElementById("consent-analytics");
+    const marketingCheckbox = document.getElementById("consent-marketing");
+
+    const consent = getConsent();
+
+    if (!consent) {
+      showBanner();
+    } else {
+      applyConsent(consent);
+      hideBanner();
+    }
+
+    document.getElementById("cookie-accept-all").addEventListener("click", function () {
+      const consent = {
+        necessary: true,
+        analytics: true,
+        marketing: true
+      };
+      setConsent(consent);
+      applyConsent(consent);
+      hideBanner();
+    });
+
+    document.getElementById("cookie-reject").addEventListener("click", function () {
+      const consent = {
+        necessary: true,
+        analytics: false,
+        marketing: false
+      };
+      setConsent(consent);
+      hideBanner();
+    });
+
+    document.getElementById("cookie-save").addEventListener("click", function () {
+      const consent = {
+        necessary: true,
+        analytics: analyticsCheckbox.checked,
+        marketing: marketingCheckbox.checked
+      };
+      setConsent(consent);
+      applyConsent(consent);
+      hideBanner();
+    });
+  });
+</script>
 </body>
 </html>
