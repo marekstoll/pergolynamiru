@@ -299,11 +299,13 @@ s.parentNode.insertBefore(t,s)}(window, document,'script');
 
 fbq('init', '1267462398760678');
 fbq('track', 'PageView');
-document.querySelectorAll('a[href="#kontakt"], a[href^="mailto:"]').forEach(el => {
-  el.addEventListener('click', function() {
-    if (window.fbq) fbq('track', 'Lead');
+setTimeout(() => {
+  document.querySelectorAll('a[href="#kontakt"], a[href^="mailto:"]').forEach(el => {
+    el.addEventListener('click', function() {
+      if (window.fbq) fbq('track', 'Lead');
+    });
   });
-});
+}, 500);
   }
 
   function applyConsent(consent) {
