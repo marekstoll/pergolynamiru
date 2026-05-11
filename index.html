@@ -306,7 +306,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script');
 fbq('init', '1267462398760678');
 fbq('track', 'PageView');
 setTimeout(() => {
- document.querySelectorAll('.btn.btn-primary')
+  document.querySelectorAll('.btn.btn-primary').forEach(el => {
     el.addEventListener('click', function() {
       if (window.fbq) fbq('track', 'Lead');
     });
@@ -318,7 +318,6 @@ setTimeout(() => {
     });
   });
 }, 500);
-  }
 
   function applyConsent(consent) {
     if (consent.analytics) loadAnalytics();
